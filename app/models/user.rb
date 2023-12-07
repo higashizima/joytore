@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :training_records, dependent: :destroy
   accepts_nested_attributes_for :training_records, allow_destroy: true
   has_many :post_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_training_records, through: :likes, source: :training_record
   
   has_one_attached :profile_image
   

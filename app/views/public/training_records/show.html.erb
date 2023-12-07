@@ -23,5 +23,26 @@
       <%= f.submit "送信する" %>
     <% end %>
   </div>
-
+  
+  <!--いいね-->
+  <p>※自分の投稿にいいねできない機能要搭載（挙動確認のため最後の方に実装）</p>
+  <div>
+    <% if @training_record.liked_by?(current_user) %>
+    <p>
+      <%= link_to training_record_likes_path(@training_record), method: :delete do %>
+        ♥<%= @training_record.likes.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to training_record_likes_path(@training_record), method: :post do %>
+        ♡<%= @training_record.likes.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+  </div>
+  <!--いいねした人一覧-->
+  <% @training_record.liked_users.each do |user| %>
+  <li><%=user.name %></li>
+  <% end%>
 </div>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :users, only:[:edit, :update]
     resources :training_records, only:[:new, :show, :create, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
     end
   end
   
