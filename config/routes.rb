@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/my_page', to: 'users#show'
     resources :users, only:[:edit, :update]
-    get 'training_records/new'
-    resources :training_records, only:[:create, :edit, :update]
+    resources :training_records, only:[:new, :show, :create, :edit, :update] do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

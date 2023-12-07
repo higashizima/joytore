@@ -1,0 +1,27 @@
+<div class='container'>
+  <%= @training_record.content %>
+  <%= @detail.weight %>
+  <%= @detail.rep %>
+  <%= @detail.set %>
+  <%= @menu.name %>
+
+  <div>
+    <p>コメント件数：<%= @training_record.post_comments.count %></p>
+    <% @training_record.post_comments.each do |post_comment| %>
+      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+      <%= post_comment.user.name %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除", training_record_post_comment_path(post_comment.training_record, post_comment), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <!--routingをネストしているため2つの引数を渡す-->
+    <%= form_with model: [@training_record, @post_comment] do |f| %>
+      <%= f.text_area :comment, placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+
+</div>
