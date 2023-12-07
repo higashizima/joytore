@@ -101,6 +101,11 @@ Detail.create!(
   )
 end  
 
+Admin.create!(
+  email: "test_admin@email",
+  password: "test_admin"
+  )
+
 # attributesがうまくいかない
 # TrainingRecord.create!({
 #   user_id: 1,

@@ -1,0 +1,30 @@
+<div class="container">
+  <!--エラーテンプレート-->
+  <div id="comments_error">
+    <%= render 'layouts/errors', model: @training_record %>
+  </div>
+  
+  <%= form_with(model: @training_record, url: training_records_path, method: :post, local: true) do |f| %>
+    <div>menu</div>
+    <!--追加ボタンの記述-->
+      <%= link_to_add_association "追加ボタン", f, :details,
+      class: 'add_fields',
+      id: 'add-btn',
+      data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'
+        }
+      %>
+      <!--動的に追加するフォームを挿入する箇所-->
+      <div id="detail-association-insertion-point"></div>
+      <!--動的に追加するフォーム(renderで飛ばしている先が追加される) -->
+      <%= f.fields_for :details do |form| %>
+      <%= render "detail_fields", f: form %>
+      <% end %>
+      
+      <p>コメント投稿</p>
+      <%= f.text_area :content, class: 'form-control' %>
+        <%= f.submit "記録する",class: 'btn btn-outline-dark' %>
+
+  <% end %>
+</div>

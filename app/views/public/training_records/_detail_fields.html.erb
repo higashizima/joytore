@@ -1,0 +1,25 @@
+<!--training_record_newページの動的追加フォーム-->
+<div class="nested-fields">
+  <table>
+    <tr>
+      <td>トレーニング種目</td>
+      <td>
+        <%= f.collection_select :menu_id, Menu.all, :id, :name, options = { prompt: "種目を選択してください"} %>
+      </td>
+      <td>重量</td>
+      <td>
+        <%= f.text_field :weight, class: 'form-control' %>
+      </td>
+      <td>レップ数</td>
+      <td>
+        <%= f.text_field :rep, class: 'form-control' %>
+      </td>
+      <td>セット数</td>
+      <td>
+        <%= f.text_field :set, class: 'form-control' %>
+        
+      </td>
+      <td><%= link_to_remove_association "削除", f %></td>
+    </tr>
+  </table>
+</div>
