@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  belongs_to :gym
+  has_many :favorite_gyms, dependent: :destroy
+  has_meny :favorited_gyms, throug: :favorite_gyms, source: :gym
   has_many :training_records, dependent: :destroy
   accepts_nested_attributes_for :training_records, allow_destroy: true
   has_many :post_comments, dependent: :destroy

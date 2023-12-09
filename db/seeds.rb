@@ -18,6 +18,16 @@ User.create!(
 end
 
 5.times do |n|
+Gym.create!(
+  gym_name: "エニタイム#{n + 1}",
+  postcode: "100000#{n + 1}",
+  address: "東京都千代田区#{n + 1}",
+  fee: "#{n + 1}000",
+  is_open: true
+  )
+end
+
+5.times do |n|
 TrainingRecord.create!(
   user_id: "#{n + 1}",
   content: "トレーニングの一言コメント#{n + 1}"
