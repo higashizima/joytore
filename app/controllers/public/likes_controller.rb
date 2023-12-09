@@ -3,8 +3,7 @@ class Public::LikesController < ApplicationController
   
   def create
     training_record = TrainingRecord.find(params[:training_record_id])
-    like = current_user.likes.new(training_record_id: training_record.id)
-    like.save
+    current_user.likes.create(training_record_id: training_record.id)
     redirect_to request.referer
   end
 
