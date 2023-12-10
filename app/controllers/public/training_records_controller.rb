@@ -10,7 +10,7 @@ class Public::TrainingRecordsController < ApplicationController
     # _errors.html.erbに渡すインスタンス変数のため＠マーク必要
      @training_record =current_user.training_records.new(training_record_params)
      if @training_record.save
-       redirect_to users_my_page_path(id: current_user)
+       redirect_to user_path(id: current_user)
      else
        render :new
      end
@@ -35,6 +35,6 @@ class Public::TrainingRecordsController < ApplicationController
       details_attributes: [:id, :menu_id, :weight, :rep, :set, :_destroy])
       # .merge(user_id: current_user.id)
       # ↑の記載はcreateアクション” @training_record =current_user.training_records.new(training_record_params)”でcurrenr_user指定がなければ必要なもの
-      # ※入力がなくてもパラメータで運んでくることができるメソッド
+      # ※yユーザーからの入力がなくてもパラメータで運んでくることができるメソッド
   end
 end

@@ -13,7 +13,7 @@ class Public::FavoriteGymsController < ApplicationController
   
   def destroy
     gym = Gym.find(params[:gym_id])
-    favorite_gym = current_user.favorite_gyms.find_by(gym_id: gym.id)
+    favorite_gym = current_user.favorite_gyms.find(gym_id: gym.id)
     favorite_gym.destroy
     redirect_to request.referer
   end

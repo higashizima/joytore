@@ -14,9 +14,14 @@ Rails.application.routes.draw do
     resources :gyms, only:%i[index show] do
       resource :favorite_gyms, only: %i[create destroy] 
     end
-    get 'users/my_page', to: 'users#show'
-    resources :users, only:%i[edit update] do
+    get 'users/:id', to: 'users#show', as: 'user'
+    get 'user/profile', to:'user#edit'
+    get 'user/update'
+    resources :users, only: %i[] do
+      resource :relationships, only: %i[create destroy]
       get 'favorite_gyms', to:'favorite_gyms#index', on: :collection
+      get "followings", to: 'relationships#followings'
+      get "followers", to: 'relationships#followers'
     end
     resources :training_records, only:%i[new show create edit update] do
       resources :post_comments, only: %i[create destroy]
