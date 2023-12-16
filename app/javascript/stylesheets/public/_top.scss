@@ -1,6 +1,5 @@
 .tab {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
   margin-top: 20px;
   
   .tab__menu {
@@ -41,7 +40,6 @@
  
  .tab__panel-gym {
      min-height: 1200px; /* テキスト量が多くなっても対応できるように */
-     padding: 10px 30px;
      border-radius: 10px;
      display: none;
    }

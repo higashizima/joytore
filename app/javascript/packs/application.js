@@ -15,7 +15,7 @@ import "../stylesheets/application";
 import "./main";
 
 
-require("jquery")
+// require("jquery")
 require("@nathanvda/cocoon")
 
 Rails.start()

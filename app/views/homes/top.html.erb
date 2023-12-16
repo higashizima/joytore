@@ -1,13 +1,13 @@
 <div class="tab">
   <ul class="tab__menu">
-    <li class="tab__menu-item is-active" data-tab="01"><%= current_user.gym.gym_name %></li>
+    <li class="tab__menu-item is-active" data-tab="01"><%= @current_users_gym.gym_name %></li>
     <li class="tab__menu-item" data-tab="02">フォロー中</li>
   </ul>
   <!--ジムのタイムラインパネル-->
   <div class="tab__panel">
     <div class="tab__panel-box tab__panel-gym is-show" data-panel="01">
       <div class="tab__panel-content">
-        <%= render '/layouts/timeline', training_records: @training_records, user: @user %>
+        <%= render '/layouts/timeline', training_records: @training_records %>
       </div>
     </div>
     <!--フォロー中のタイムラインパネル-->

@@ -9,6 +9,7 @@
         <p>お気に入りジム：　<%= user.favorite_gyms.count %></p>
         <p><%= user.followeds.count %>フォロー　<%= user.followers.count %>フォロワー</p>
         <%= link_to '編集する', user_profile_path %>
+         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
     </div>
 </section>
 <section>

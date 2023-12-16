@@ -1,1 +1,10 @@
-<div>編集ページ</div>
+<%= form_with model: @user do |f| %>
+  <div class="edit_item">プロフィール画像</div>
+  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  <div class="edit_item">名前</div>
+  <%= f.text_field :name, autofocus: true, placeholder:@user.name %>
+  <div class="edit_item">自己紹介</div>
+  <%= f.text_area :introduction, placeholder:@user.description  %>
+  <br>
+  <%= f.submit "保存", class: 'btn btn-secondary mt-3' %>
+<% end %>
