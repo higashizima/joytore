@@ -4,7 +4,8 @@ class TrainingRecord < ApplicationRecord
   accepts_nested_attributes_for :details, reject_if: :all_blank, allow_destroy: true
   
   belongs_to :user
-  
+  # タイムラインでジムの投稿一覧を表示させるため
+  has_one :master,  through: :user
   has_many :post_comments, dependent: :destroy
   
   has_many :likes, dependent: :destroy

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       resource :favorite_gyms, only: %i[create destroy] 
     end
     get 'users/:id', to: 'users#show', as: 'user'
-    get 'user/profile', to:'user#edit'
+    get 'user/profile', to:'users#edit'
     get 'user/update'
     resources :users, only: %i[] do
       resource :relationships, only: %i[create destroy]

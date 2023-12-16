@@ -1,0 +1,58 @@
+.tab {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  
+  .tab__menu {
+    display: flex;
+    align-items: flex-end; /* メニューを下揃え&高さを調整 */
+    justify-content: center;
+    min-height: 50px; /* メニュー切替時にタブがズレないように */
+    padding: 0;
+    margin: 0;
+    
+    .tab__menu-item {
+      list-style: none;
+      width: 400px;
+      padding: 8px 5px; /* メニューに高さを付ける */
+      text-align: center;
+      margin-right: 6px;
+      background-color: #cdcdcd;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      cursor: pointer;
+      transition: all .3s; /* アニメーション */
+    }
+    
+    .tab__menu-item:last-of-type {
+      margin-right: 0px;
+    }
+    
+    .tab__menu-item.is-active {
+      background-color: blue;
+      color: #ffffff;
+      padding: 12px 5px;
+    }
+  }
+}
+
+.tab__panel {
+  width: 100%;
+ 
+ .tab__panel-gym {
+     min-height: 1200px; /* テキスト量が多くなっても対応できるように */
+     padding: 10px 30px;
+     border-radius: 10px;
+     display: none;
+   }
+ 
+ .tab__panel-following {
+    @extend .tab__panel-gym
+    }
+ 
+ .is-show {
+    display: block;
+    }
+}
+
+

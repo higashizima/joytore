@@ -20,21 +20,23 @@ class User < ApplicationRecord
   # いいね
   has_many :likes, dependent: :destroy
   has_many :liked_training_records, through: :likes, source: :training_record
-  
-  
+
+  validates :description, length: {maximum: 160}
+
+
   has_one_attached :profile_image
   # プロフィール画像取得
   def get_profile_image(width, height)
   unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/NoImage.png')  
+    file_path = Rails.root.join('app/assets/images/NoImage.png')
     profile_image.attach(io: File.open(file_path), filename: 'NoImage.png', content_type: 'image/png')
   end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # フォロー確認
   def following?(user)
     following_users.include?(user)
-  end	
+  end
 
 end

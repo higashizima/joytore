@@ -7,6 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do |n|
+Gym.create!(
+  gym_name: "エニタイム#{n + 1}",
+  postcode: "100000#{n + 1}",
+  address: "東京都千代田区#{n + 1}",
+  fee: "#{n + 1}000",
+  is_open: true
+  )
+end
+
+5.times do |n|
 User.create!(
   gym_id: "#{n + 1}",
   name: "テスト#{n + 1}",
@@ -14,16 +24,6 @@ User.create!(
   password: "test_pass#{n + 1}",
   description: "自己紹介#{n + 1}",
   is_active: true
-  )
-end
-
-5.times do |n|
-Gym.create!(
-  gym_name: "エニタイム#{n + 1}",
-  postcode: "100000#{n + 1}",
-  address: "東京都千代田区#{n + 1}",
-  fee: "#{n + 1}000",
-  is_open: true
   )
 end
 
