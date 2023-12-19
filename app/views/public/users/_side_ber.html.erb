@@ -1,4 +1,4 @@
-<section class="profile">
+<div class="profile">
     <div class="profile_image">
         <%= image_tag user.get_profile_image(100,100), class: "rounded-circle", size: "100x100" %>
     </div>
@@ -7,14 +7,14 @@
     <div class="users_info">
         <p>登録ジム：　<%= user.gym.gym_name %></p>
         <p>お気に入りジム：　<%= user.favorite_gyms.count %></p>
-        <p><%= user.followeds.count %>フォロー　<%= user.followers.count %>フォロワー</p>
-        <%= link_to '編集する', user_profile_path %>
-         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <p><%= user.followers.count %>フォロー　<%= user.followeds.count %>フォロワー</p>
+        <p><%= link_to '編集する', user_profile_path, class: "link" %></p>
     </div>
-</section>
-<section>
-    <%= link_to 'タイムライン', user_profile_path %>
-    <%= link_to 'マイページ', user_path(current_user.id) %>
-    <%= link_to '記録する', user_profile_path %>
-</section>
+</div>
+<div class="navi">
+    <p><%= link_to 'タイムライン', user_profile_path, class: "link navi_item" %></p>
+    <p><%= link_to 'マイページ', user_path(current_user.id), class: "link navi_item" %></p>
+    <p><%= link_to '記録する', new_training_record_path, class: "link navi_item" %></p>
+    <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "link navi_item" %></p>
+</div>
 

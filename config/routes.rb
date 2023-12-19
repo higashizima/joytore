@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
     get 'users/:id', to: 'users#show', as: 'user'
     get 'user/profile', to:'users#edit'
-    get 'user/update'
+    patch 'user/update', to:'users#update'
     resources :users, only: %i[] do
       resource :relationships, only: %i[create destroy]
       get 'favorite_gyms', to:'favorite_gyms#index', on: :collection

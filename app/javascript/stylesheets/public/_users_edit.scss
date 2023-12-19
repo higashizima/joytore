@@ -1,0 +1,23 @@
+@use "../global/variables" as *;
+
+.edit_item {
+  margin-top: 20px;
+}
+
+.edit_item_name {
+  width: 30%;
+  height: 50px;
+}
+
+.edit_item_description {
+  width: 70%;
+  height: 70px;
+}
+
+.update_btn {
+  @include btn01(orange);
+}
+
+.update_btn:hover {
+  @include btn_hover01(orange);
+}

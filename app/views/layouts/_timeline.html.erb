@@ -1,19 +1,33 @@
 <% training_records.each do |training_record| %>
   <div class="timeline">
-    <div class="timeline_users_name">
+    <div class="timeline_user">
       <div class="image_tag"><%= image_tag training_record.user.get_profile_image(50,50), class: "rounded-circle", size: "50x50"  %></div>
       <div class="timeline_users_name"><strong><%= training_record.user.name%></strong></div>
       <div class="date"><%= training_record.created_at.strftime('%Y/%m/%d') %></div>
     </div>
-    <div class="content">
-      <%= training_record.content %>
-    </div>
-    <% training_record.details.each do |detail| %>
-      <div class="detail">
-        <%= detail.menu.name %>
-        <%= detail.weight %>
-        <%= detail.rep %>
-        <%= detail.set %>
+    <%= link_to training_record_path(training_record.id), class: "link" do %>
+      <div class="content">
+        ＞<%= training_record.content %>
+      </div>
+      <% training_record.details.each do |detail| %>
+        <div class="detail">
+          <p><%= detail.menu.name %></p>
+          <p><%= detail.weight %>kg</p>
+          <p><%= detail.rep %>回</p>
+          <p><%= detail.set %>セット</p>
+        </div>
+      <% end %>
+      <div class="timeline_info">
+        <% if training_record.liked_by?(current_user) %>
+          <%= link_to training_record_likes_path(training_record), method: :delete, class: "link like_btn" do %>
+           <i class="fas fa-heart"></i><%= training_record.likes.count %> 
+          <% end %>
+        <% else %>
+          <%= link_to training_record_likes_path(training_record), method: :post, class: "link like_btn" do %>
+            <i class="far fa-heart"></i><%= training_record.likes.count %> 
+          <% end %>
+        <% end %>
+        <i class="far fa-comment"></i><%= training_record.post_comments.count %>
       </div>
     <% end %>
   </div>

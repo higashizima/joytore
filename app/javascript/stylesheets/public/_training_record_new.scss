@@ -1,0 +1,78 @@
+@use "../global/variables" as *;
+
+// detail_fields.html.erb
+// ーーーーーーーーーーーー
+.nested-fields {
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 0
+  }
+}
+
+.detail_row {
+  display:flex;
+  margin-bottom: 20px;
+}
+
+.detail_box {
+  margin-right:10px;
+}
+
+.button_delete {
+  border: 1px solid gray;
+  border-radius: 40px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.button_delete:hover {
+  border: 3px solid red;
+  color: red;
+  text-decoration: none;
+  transition: .3s;
+}
+
+// ーーーーーーーーーーーー
+
+// training_recordのnew.hetml.erb
+// ーーーーーーーーーーーー
+.field_name {
+  font-size: 200%;
+}
+
+.add_fields {
+  font-weight: bold;
+  border-radius: 40px;
+  padding: 5px 10px 5px 10px;
+  color: orange;
+}
+
+.add_fields:hover {
+  color: orange;
+  border-radius: 40px;
+  transition: .3s;
+}
+
+.comment_field {
+  margin-top: 30px;
+}
+
+.submit_btn {
+  @include btn01(orange);
+}
+
+.submit_btn:hover {
+  @include btn_hover01(orange);
+}
+
+.comment_form {
+  width: 70%;
+  height: 150px;
+}

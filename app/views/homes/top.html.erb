@@ -1,6 +1,6 @@
 <div class="tab">
   <ul class="tab__menu">
-    <li class="tab__menu-item is-active" data-tab="01"><%= @current_users_gym.gym_name %></li>
+    <li class="tab__menu-item is-active" data-tab="01"><%= current_user.gym.gym_name %></li>
     <li class="tab__menu-item" data-tab="02">フォロー中</li>
   </ul>
   <!--ジムのタイムラインパネル-->
@@ -13,7 +13,7 @@
     <!--フォロー中のタイムラインパネル-->
     <div class="tab__panel-box tab__panel-following" data-panel="02">
       <div class="tab__panel-content">
-      枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。2枚目のタブです。
+      <%= render '/layouts/timeline', training_records: @follower_training_records %>
       </div>
     </div>
   </div>

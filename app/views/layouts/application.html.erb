@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!--<script src="https://kit.fontawesome.com/15ed15601f.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/15ed15601f.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,7 +14,7 @@
   <body>
     <header>
       <div class="header">
-        <strong><%= link_to 'ジョイトレ', root_path %></strong>
+        <strong><%= link_to 'ジョイトレ', root_path, class: "header_name link" %></strong>
       </div>
     </header>
     <div class="main">
@@ -23,9 +23,10 @@
           <%= render '/public/users/side_ber', user: current_user %>
         </div>
       <% end %>
-      <div class="body">
+      <div class="main_content">
         <%= yield %>
       </div>
+      <div class="left_sideber"></div>
     </div>
   </body>
 </html>

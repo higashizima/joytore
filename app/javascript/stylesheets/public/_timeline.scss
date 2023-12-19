@@ -1,3 +1,5 @@
+@use "../global/variables" as *;
+
 .timeline {
   margin: 20px;
   padding: 20px;
@@ -5,8 +7,10 @@
   border-bottom: 1px solid gray;
 }
 
-.timeline_users_name {
+.timeline_user {
   display: flex;
+  height: 50px;
+  line-height: 50px;
 }
 
 .content {
@@ -15,4 +19,32 @@
 
 .date {
   margin-left: auto;
+}
+
+.timeline_info i {
+  display: inline-block;
+  margin-ri: 20px;
+}
+
+.detail {
+  display: flex;
+  width: 70%;
+  margin-bottom: 5px;
+  padding: 3px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  
+  p {
+    margin: 10px 20px 10px 0;
+  }
+}
+
+.timeline_info {
+  i {
+  margin: 0 3px 0 3px;
+  }
+}
+
+.like_btn {
+  margin-right: 20px;
 }

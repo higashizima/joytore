@@ -16,7 +16,7 @@
       padding: 8px 5px; /* メニューに高さを付ける */
       text-align: center;
       margin-right: 6px;
-      background-color: #cdcdcd;
+      background-color: lightgray;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       cursor: pointer;
@@ -28,8 +28,9 @@
     }
     
     .tab__menu-item.is-active {
-      background-color: blue;
-      color: #ffffff;
+      background-color: orange;
+      font-weight: bold;
+      color: white;
       padding: 12px 5px;
     }
   }

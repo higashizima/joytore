@@ -1,0 +1,53 @@
+@use "../global/variables" as *;
+
+.profile_head {
+    display: flex;
+    height: 150px;
+}
+
+.user_follow_info {
+    width: 100%;
+    text-align: center;
+    font-size: 130%;
+    line-height: 150px;
+}
+
+.user_info {
+    width: 20;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.show_user_description {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.follow_btn {
+  @include btn01(orange);
+}
+
+.follow_btn:hover {
+  @include btn_hover01(orange);
+}
+
+.edit_btn {
+    margin-top: 20px;
+    border-radius: 40px;
+    margin-top: 20px;
+    padding: 5px 10px 5px 10px;
+    border: 2px solid black;
+    background: white;
+}
+
+.edit_btn:hover {
+  border: 2px solid gray;
+  background:gray;
+  color: white;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.simple-calendar{
+  width: 30%;
+}

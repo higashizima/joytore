@@ -12,7 +12,7 @@
       <%= post_comment.user.name %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
         <% if post_comment.user == current_user %>
-          <%= link_to "削除", training_record_post_comment_path(post_comment.training_record, post_comment), method: :delete %>
+          <%= link_to "削除", training_record_post_comment_path(post_comment.training_record, post_comment), method: :delete, class: "link" %>
       <% end %>
     <% end %>
   </div>
@@ -29,13 +29,13 @@
   <div>
     <% if @training_record.liked_by?(current_user) %>
     <p>
-      <%= link_to training_record_likes_path(@training_record), method: :delete do %>
+      <%= link_to training_record_likes_path(@training_record), method: :delete, class: "link" do %>
         ♥<%= @training_record.likes.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to training_record_likes_path(@training_record), method: :post do %>
+      <%= link_to training_record_likes_path(@training_record), method: :post, class: "link" do %>
         ♡<%= @training_record.likes.count %> いいね
       <% end %>
     </p>

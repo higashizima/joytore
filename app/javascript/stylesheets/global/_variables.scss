@@ -1,0 +1,21 @@
+@mixin btn01($color) {
+  font-weight: bold;
+  border-radius: 40px;
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
+  color: $color;
+  border: 4px solid $color;
+  background: white;
+}
+
+@mixin btn_hover01($color) {
+  background:$color;
+  border-radius: 40px;
+  color: white;
+  text-decoration: none;
+  transition: .3s;
+}
+
+$layout_border: 5px solid lightorange; 
+
+$main_color: white;

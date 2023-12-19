@@ -1,19 +1,32 @@
-<div class="profile">
+<div class="show_profile">
   <div class="profile_head">
     <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle", size: "150x150"  %>
-    <div class="user_follow_info"><%= @user.training_records.count %>投稿　<%= @user.followeds.count %>フォロー　<%= @user.followers.count %>フォロワー</div>
+    <div class="user_follow_info"><%= @user.training_records.count %>投稿　<%= @user.followers.count %>フォロー　<%= @user.followeds.count %>フォロワー</div>
+  <!--カレンダー表示-->
+  <!--<%= month_calendar training_records: @training_records do |date, training_records| %>-->
+  <!--　<%= date.day %>-->
+  <!--  　<% training_records.each do |training_record| %>-->
+  <!--      <div class="calendar_training_records">-->
+  <!--        <% if training_record.is_a?(TrainingRecord) %>-->
+  <!--          <%= link_to '⭐️️',post_workout_path(event) %>-->
+  <!--        <% end %>-->
+  <!--      </div>-->
+  <!--  <% end %>-->
+  <!--<% end %>-->
+</div>
+  <div class="user_info">
+    <div class="user_name"><strong><%= @user.name%></strong></div>
+    <div class="show_user_description"><%= @user.description%></div>
+    <div class="show_user_gym">登録ジム：<%= @users_gym.gym_name%></div>
   </div>
-  <div class="user_info user_name"><strong><%= @user.name%></strong></div>
-  <div class="user_info"><%= @user.description%></div>
-  <div class="user_info"><%= @users_gym.gym_name%></div>
 </div>
 <% if current_user != @user %>
   <% if current_user.following?(@user) %>
-    <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
-  <% else %>
-    <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"btn btn-success" %>
+    <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "link follow_btn" %>
+  <% elsif %>
+    <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"link follow_btn" %>
   <% end %>
 <% else %>
-  <%= link_to "プロフィール編集", user_profile_path, class:"btn btn-success" %>
+    <%= link_to "プロフィール編集", user_profile_path, class:"link edit_btn" %>
 <% end %>
 <%= render '/layouts/timeline', training_records: @training_records %>

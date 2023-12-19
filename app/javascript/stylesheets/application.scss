@@ -2,19 +2,16 @@
 
 @use "./global/layout";
 @use "./global/sideber";
+@use "./global/variables";
 @use "./public/top";
-@use "./public/show";
+@use "./public/users_show";
 @use "./public/timeline";
-
-
+@use "./public/training_record_new";
+@use "./public/users_edit";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-.user_name {
-    font-size: 160%;
-  }
 

@@ -59,3 +59,5 @@ gem 'devise'
 gem 'kaminari'
 gem "cocoon"
 gem 'dotenv-rails'
+gem 'simple_calendar'
+gem 'ransack'
