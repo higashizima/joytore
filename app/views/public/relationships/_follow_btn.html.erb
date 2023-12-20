@@ -1,0 +1,5 @@
+<% if current_user.following?(user) %>
+          <div class="user_index_follow_btn"v><%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, remote: true, data: {"turbolinks" => false} , class: "link follow_btn" %></div>
+        <% elsif %>
+          <div class="user_index_follow_btn"><%= link_to "フォローする", user_relationships_path(user.id), method: :post, remote: true, data: {"turbolinks" => false} , class:"link follow_btn" %></div>
+        <% end %>

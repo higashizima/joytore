@@ -17,4 +17,10 @@ class TrainingRecord < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
+  
+  # ransackに検索を許可するリストを設定
+def self.ransackable_attributes(auth_object = nil)
+    ["content", "user_id"]
+end
+
 end

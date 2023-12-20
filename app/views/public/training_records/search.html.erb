@@ -1,0 +1,23 @@
+<div class="tab">
+  <ul class="tab__menu">
+    <li class="tab__menu-item is-active" data-tab="01">ユーザー</li>
+    <li class="tab__menu-item" data-tab="02">投稿</li>
+  </ul>
+  <!--ジムのタイムラインパネル-->
+  <div class="tab__panel">
+    <div class="tab__panel-box tab__panel-gym is-show" data-panel="01">
+      <div class="tab__panel-content">
+        <%= render '/layouts/timeline', training_records: @users_training_records %>
+      </div>
+    </div>
+    <!--フォロー中のタイムラインパネル-->
+    <div class="tab__panel-box tab__panel-following" data-panel="02">
+      <div class="tab__panel-content">
+      <%= render '/layouts/timeline', training_records: @training_records %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

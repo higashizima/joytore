@@ -1,0 +1,56 @@
+@use "../global/variables" as *;
+
+.comment_item{
+  margin: 20px;
+  padding: 20px;
+  border-top: 1px solid lightgray;
+}
+
+.comment_form{
+  margin: 20px;
+  padding: 20px;
+  height: 60px;
+}
+
+.comment_area{
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  background: $main_color;
+}
+
+.comment_submit{
+  border: none;
+  background:none;
+  line-height: 80px;
+}
+
+.comment_user{
+  display: flex;
+  height: 50px;
+}
+
+
+.comment_user_name{
+  line-height: 50px;
+}
+
+.comment_date{
+  margin-left: auto;
+}
+
+.comment_text{
+  text-align: center;
+}
+
+.comment_text_under{
+  display: flex;
+}
+
+.comment_delete{
+  margin-left: auto;
+}
+
+.comment_delete:hover{
+  color: red;
+}

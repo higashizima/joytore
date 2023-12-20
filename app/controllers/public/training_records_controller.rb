@@ -25,10 +25,22 @@ class Public::TrainingRecordsController < ApplicationController
 
   def edit
     @training_record = TrainingRecord.find(params[:id])
-
+  end
+  
+  def destroy
+    training_record = TrainingRecord.find(params[:id])
+    training_record.destroy
+    redirect_to user_path(id: current_user)
   end
 
-
+  def search
+    @q = params[:q]
+    @users = User.ransack(name_cont: @q).result
+    @users_training_records = TrainingRecord.where(user_id: @users.pluck(:id))
+    @training_records = TrainingRecord.ransack(content_cont: @q).result
+  end
+  
+  
   private
   def training_record_params
     params.require(:training_record).permit(:user_id, :content,

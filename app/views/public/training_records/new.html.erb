@@ -1,32 +1,28 @@
-<div class="colore">
-<div class="container">
-  <!--エラーテンプレート-->
-  <div id="comments_error">
-    <%= render 'layouts/errors', model: @training_record %>
-  </div>
-  
-  <%= form_with(model: @training_record, url: training_records_path, method: :post, local: true) do |f| %>
-    <div class="field_name">Training Memo</div>
-      <!--動的に追加するフォームを挿入する箇所-->
-      <div id="detail-association-insertion-point"></div>
-      <!--動的に追加するフォーム(renderで飛ばしている先が追加される) -->
-      <%= f.fields_for :details do |form| %>
-      <%= render "detail_fields", f: form %>
-      <% end %>
-    <!--追加ボタンの記述-->
-      <%= link_to_add_association "＋トレーニング追加", f, :details, class: 'add_fields', id: 'add-btn',
-      data: {
-        association_insertion_node: '#detail-association-insertion-point',
-        association_insertion_method: 'after'
-        }
-      %>
-      
-      <div class="comment_field">
-      <p>コメント投稿</p>
-      <%= f.text_area :content, class: 'comment_form', placeholder:'どんなトレーニングだった？' %>
-        <p><%= f.submit "記録する",class: 'submit_btn' %></p>
-      </div>
+<!--エラーテンプレート-->
+<div id="comments_error">
+  <%= render 'layouts/errors', model: @training_record %>
+</div>
 
-  <% end %>
-</div>
-</div>
+<%= form_with(model: @training_record, url: training_records_path, method: :post, local: true) do |f| %>
+  <div class="field_name">Training Memo</div>
+    <!--動的に追加するフォームを挿入する箇所-->
+    <div id="detail-association-insertion-point"></div>
+    <!--動的に追加するフォーム(renderで飛ばしている先が追加される) -->
+    <%= f.fields_for :details do |form| %>
+    <%= render "detail_fields", f: form %>
+    <% end %>
+  <!--追加ボタンの記述-->
+    <%= link_to_add_association "＋トレーニング追加", f, :details, class: 'add_fields', id: 'add-btn',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'after'
+      }
+    %>
+    
+    <div class="content_field">
+    <p>コメント投稿</p>
+    <%= f.text_area :content, class: 'content_form', placeholder:'どんなトレーニングだった？' %>
+      <p><%= f.submit "記録する",class: 'submit_btn' %></p>
+    </div>
+
+<% end %>

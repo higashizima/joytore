@@ -1,26 +1,38 @@
 @use "../global/variables" as *;
 
 .profile_head {
-    display: flex;
-    height: 150px;
+  display: flex;
+  height: 150px;
 }
 
 .user_follow_info {
-    width: 100%;
-    text-align: center;
-    font-size: 130%;
-    line-height: 150px;
+  width: 100%;
+  font-size: 130%;
+  line-height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.user_follow_info_item{
+  margin-right: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.user_follow_info_item:hover{
+  color: black;
+  text-decoration-color: orange;
 }
 
 .user_info {
-    width: 20;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  width: 20;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .show_user_description {
-    margin-top: 10px;
-    margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .follow_btn {
@@ -32,12 +44,12 @@
 }
 
 .edit_btn {
-    margin-top: 20px;
-    border-radius: 40px;
-    margin-top: 20px;
-    padding: 5px 10px 5px 10px;
-    border: 2px solid black;
-    background: white;
+  margin-top: 20px;
+  border-radius: 40px;
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
+  border: 2px solid black;
+  background: white;
 }
 
 .edit_btn:hover {

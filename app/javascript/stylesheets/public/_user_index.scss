@@ -1,0 +1,31 @@
+@use "../global/variables" as *;
+
+.user_index{
+  margin: 20px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  
+  .user_index_user{
+    display: flex;
+    
+    .timeline_users_name{
+      line-height: 80px;
+    }
+    
+    .user_index_user_gym{
+      margin-left: 60px;
+      line-height: 80px;
+    }
+    
+    .user_index_follow_btn{
+      margin-left: auto;
+      line-height: 80px;
+    }
+  }
+  
+  .user_index_user_gym{
+    text-align: end;
+    color: gray;
+  }
+}
+

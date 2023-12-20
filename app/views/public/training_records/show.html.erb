@@ -1,48 +1,65 @@
-<div class='container'>
-  <%= @training_record.content %>
-  <%= @detail.weight %>
-  <%= @detail.rep %>
-  <%= @detail.set %>
-  <%= @menu.name %>
-
-  <div>
-    <p>コメント件数：<%= @training_record.post_comments.count %></p>
-    <% @training_record.post_comments.each do |post_comment| %>
-      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-      <%= post_comment.user.name %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", training_record_post_comment_path(post_comment.training_record, post_comment), method: :delete, class: "link" %>
+<div class="timeline">
+    <div class="timeline_user">
+      <div class="image_tag"><%= image_tag @training_record.user.get_profile_image(50,50), class: "rounded-circle", size: "50x50"  %></div>
+      <div class="timeline_users_name"><strong><%= @training_record.user.name%></strong></div>
+      <div class="date"><%= @training_record.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
+      <div class="content">
+        ＞<%= @training_record.content %>
+      </div>
+      <% @training_record.details.each do |detail| %>
+        <div class="detail">
+          <p><%= detail.menu.name %></p>
+          <p><%= detail.weight %>kg</p>
+          <p><%= detail.rep %>回</p>
+          <p><%= detail.set %>セット</p>
+        </div>
       <% end %>
-    <% end %>
+      <div class="timeline_info">
+        <!--非同期のためのid設定-->
+        <div id="like_buttons_<%= @training_record.id %>">
+          <%= render '/public/likes/like_btn', training_record: @training_record %>
+        </div>
+        <%= link_to training_record_path(@training_record.id), class: "link" do %>
+          <i class="far fa-comment"></i><%= @training_record.post_comments.count %>
+        <% end %>
+        <% if @training_record.user == current_user %>
+          <%= link_to training_record_path(@training_record), data: { confirm: '本当に消しますか？' },  method: :delete, class: "link training_record_delete" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
   </div>
-  <div>
+
+
+  <div class="comment_form">
     <!--routingをネストしているため2つの引数を渡す-->
     <%= form_with model: [@training_record, @post_comment] do |f| %>
-      <%= f.text_area :comment, placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
+      <%= f.text_area :comment, placeholder: "コメントしよう", class: "comment_area" %>
+      <%= f.submit "送信", class: "comment_submit" %>
     <% end %>
   </div>
-  
-  <!--いいね-->
-  <p>※自分の投稿にいいねできない機能要搭載（挙動確認のため最後の方に実装）</p>
-  <div>
-    <% if @training_record.liked_by?(current_user) %>
-    <p>
-      <%= link_to training_record_likes_path(@training_record), method: :delete, class: "link" do %>
-        ♥<%= @training_record.likes.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to training_record_likes_path(@training_record), method: :post, class: "link" do %>
-        ♡<%= @training_record.likes.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+  <div class="comment_item">
+    <% @training_record.post_comments.each do |post_comment| %>
+    <div class="comment_user">
+      <%= image_tag post_comment.user.get_profile_image(50,50) %>
+      <div class="comment_user_name"><%= post_comment.user.name %></div>
+      <div class="comment_date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
+      <p class="comment_text">
+        <%= post_comment.comment %>
+      </p>
+      <div class="comment_text_under">
+        <% if post_comment.user == current_user %>
+          <%= link_to training_record_post_comment_path(post_comment.training_record, post_comment), data: { confirm: '本当に消しますか？' },  method: :delete, class: "link comment_delete" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+ 
   <!--いいねした人一覧-->
-  <% @training_record.liked_users.each do |user| %>
-  <li><%=user.name %></li>
-  <% end%>
-</div>
+  <!--<% @training_record.liked_users.each do |user| %>-->
+  <!--<li><%=user.name %></li>-->
+  <!--<% end%>-->

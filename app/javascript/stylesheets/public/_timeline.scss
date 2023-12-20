@@ -13,8 +13,8 @@
   line-height: 50px;
 }
 
-.content {
-  padding: 20px 0 20px 0;
+.timeline_user_link{
+  @extend .timeline_user
 }
 
 .date {
@@ -40,6 +40,7 @@
 }
 
 .timeline_info {
+  display: flex;
   i {
   margin: 0 3px 0 3px;
   }
@@ -47,4 +48,12 @@
 
 .like_btn {
   margin-right: 20px;
+}
+
+.training_record_delete{
+  margin-left: auto;
+}
+
+.training_record_delete:hover{
+  color: red;
 }

@@ -60,7 +60,7 @@
   transition: .3s;
 }
 
-.comment_field {
+.content_field {
   margin-top: 30px;
 }
 
@@ -72,7 +72,7 @@
   @include btn_hover01(orange);
 }
 
-.comment_form {
+.content_form {
   width: 70%;
   height: 150px;
 }
