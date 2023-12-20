@@ -1,7 +1,20 @@
 <div class="show_profile">
   <div class="profile_head">
     <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle", size: "150x150"  %>
-    <div class="user_follow_info"><%= @user.training_records.count %>投稿　<%= @user.followers.count %>フォロー　<%= @user.followeds.count %>フォロワー</div>
+    <div class="user_follow_info">
+      <div class="user_follow_info_item">
+        <%= @user.training_records.count %>投稿
+      </div>
+      <%= link_to user_followings_path(@user.id), class: "user_follow_info_item" do %>  
+        <%= @user.followers.count %>フォロー
+      <% end %>
+      <%= link_to user_followers_path(@user.id), class: "user_follow_info_item" do %>
+        <%= @user.followeds.count %>フォロワー
+      <% end %>
+      <%= link_to user_favorite_gyms_path(@user.id), class: "user_follow_info_item" do %>
+        <%= @user.favorite_gyms.count %>お気に入りジム
+      <% end %>
+    </div>
   <!--カレンダー表示-->
   <!--<%= month_calendar training_records: @training_records do |date, training_records| %>-->
   <!--　<%= date.day %>-->
@@ -16,16 +29,15 @@
 </div>
   <div class="user_info">
     <div class="user_name"><strong><%= @user.name%></strong></div>
-    <div class="show_user_description"><%= @user.description%></div>
+    <div class="show_user_description" style="white-space:pre-wrap;" ><%= @user.description%></div>
     <div class="show_user_gym">登録ジム：<%= @users_gym.gym_name%></div>
   </div>
 </div>
 <% if current_user != @user %>
-  <% if current_user.following?(@user) %>
-    <%= link_to "フォロー解除", user_relationships_path(@user.id), method: :delete, class: "link follow_btn" %>
-  <% elsif %>
-    <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"link follow_btn" %>
-  <% end %>
+<!--非同期のためのid設定-->
+  <div id="follow_btn_<%= @user.id %>">
+    <%= render '/public/relationships/follow_btn', user: @user %>
+  </div>
 <% else %>
     <%= link_to "プロフィール編集", user_profile_path, class:"link edit_btn" %>
 <% end %>

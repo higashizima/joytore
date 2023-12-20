@@ -1,13 +1,16 @@
 <% training_records.each do |training_record| %>
   <div class="timeline">
     <div class="timeline_user">
-      <div class="image_tag"><%= image_tag training_record.user.get_profile_image(50,50), class: "rounded-circle", size: "50x50"  %></div>
-      <div class="timeline_users_name"><strong><%= training_record.user.name%></strong></div>
+      <%= link_to user_path(training_record.user), method: :get, class: "link timeline_user_link" do %>
+        <div class="image_tag"><%= image_tag training_record.user.get_profile_image(50,50), class: "rounded-circle", size: "50x50"  %></div>
+        <div class="timeline_users_name"><strong><%= training_record.user.name%></strong></div>
+      <% end %>
       <div class="date"><%= training_record.created_at.strftime('%Y/%m/%d') %></div>
     </div>
     <%= link_to training_record_path(training_record.id), class: "link" do %>
-      <div class="content">
-        ＞<%= training_record.content %>
+    <!--"white-space:pre-wrap;"＝改行表示-->
+      <div class="content" style="white-space:pre-wrap;" >
+        <%= training_record.content %>
       </div>
       <% training_record.details.each do |detail| %>
         <div class="detail">
@@ -18,16 +21,18 @@
         </div>
       <% end %>
       <div class="timeline_info">
-        <% if training_record.liked_by?(current_user) %>
-          <%= link_to training_record_likes_path(training_record), method: :delete, class: "link like_btn" do %>
-           <i class="fas fa-heart"></i><%= training_record.likes.count %> 
-          <% end %>
-        <% else %>
-          <%= link_to training_record_likes_path(training_record), method: :post, class: "link like_btn" do %>
-            <i class="far fa-heart"></i><%= training_record.likes.count %> 
+        <!--非同期のためのid設定-->
+        <div id="like_buttons_<%= training_record.id %>">
+          <%= render '/public/likes/like_btn', training_record: training_record %>
+        </div>
+        <%= link_to training_record_path(training_record.id), class: "link" do %>
+          <i class="far fa-comment"></i><%= training_record.post_comments.count %>
+        <% end %>
+        <% if training_record.user == current_user %>
+          <%= link_to training_record_path(training_record), data: { confirm: '本当に消しますか？' },  method: :delete, class: "link training_record_delete" do %>
+            <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <i class="far fa-comment"></i><%= training_record.post_comments.count %>
       </div>
     <% end %>
   </div>

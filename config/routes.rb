@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   
+  # ゲストユーザーログイン用ルート
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
   scope module: :public do
     resources :gyms, only:%i[index show] do
       resource :favorite_gyms, only: %i[create destroy] 
@@ -19,14 +24,16 @@ Rails.application.routes.draw do
     patch 'user/update', to:'users#update'
     resources :users, only: %i[] do
       resource :relationships, only: %i[create destroy]
-      get 'favorite_gyms', to:'favorite_gyms#index', on: :collection
+      # ルート要編集
+      get 'favorite_gyms', to:'favorite_gyms#index'
       get "followings", to: 'relationships#followings'
       get "followers", to: 'relationships#followers'
     end
-    resources :training_records, only:%i[new show create edit update] do
+    resources :training_records, only:%i[new show create edit update destroy] do
       resources :post_comments, only: %i[create destroy]
       resource :likes, only: %i[create destroy]
     end
+    get "search", to:"training_records#search"
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

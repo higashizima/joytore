@@ -10,7 +10,7 @@ class Public::PostCommentsController < ApplicationController
   end
   
   def destroy
-    # アラート表示予定
+    # アラートview
     PostComment.find(params[:id]).destroy
     redirect_to request.referer
   end

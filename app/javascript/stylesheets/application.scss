@@ -8,10 +8,12 @@
 @use "./public/timeline";
 @use "./public/training_record_new";
 @use "./public/users_edit";
+@use "./public/training_record_show";
+@use "./public/user_index";
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: box;
 }
 

@@ -1,0 +1,38 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>店舗名</th>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>月額</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% gyms.each do |gym| %>
+    <tr>
+      <td><%= gym.gym_name %></td>
+      <td><%= gym.postcode %></td>
+      <td><%= gym.address %></td>
+      <td><%= gym.fee %></td>
+      <td>
+        <div>
+          <% if gym.favorited_by?(current_user) %>
+            <p>
+              <%= link_to gym_favorite_gyms_path(gym.id), method: :delete, remote: true, data: {"turbolinks" => false} , class: "link" do %>
+                <i class="fas fa-bookmark" style="font-size: 150%; color: orange;"></i>
+            <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to gym_favorite_gyms_path(gym.id), method: :post, remote: true, data: {"turbolinks" => false} , class: "link" do %>
+               <i class="far fa-bookmark" style="font-size: 150%; color: orange;"></i>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

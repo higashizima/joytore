@@ -1,0 +1,9 @@
+<% if training_record.liked_by?(current_user) %>
+          <%= link_to training_record_likes_path(training_record), method: :delete, remote: true, data: {"turbolinks" => false} , class: "link like_btn" do %>
+           <i class="fas fa-heart"></i><%= training_record.likes.count %> 
+          <% end %>
+        <% else %>
+          <%= link_to training_record_likes_path(training_record), method: :post, remote: true, data: {"turbolinks" => false} , class: "link like_btn" do %>
+            <i class="far fa-heart"></i><%= training_record.likes.count %> 
+          <% end %>
+        <% end %>
