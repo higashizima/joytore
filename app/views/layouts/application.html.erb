@@ -15,7 +15,9 @@
     <header>
       <div class="header">
         <strong><%= link_to 'ジョイトレ', root_path, class: "header_name link" %></strong>
-        <%= render '/layouts/search' %>
+        <% if user_signed_in? %>
+          <%= render '/layouts/search' %>
+        <% end %>
       </div>
     </header>
     <div class="main">

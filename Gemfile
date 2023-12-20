@@ -61,3 +61,4 @@ gem "cocoon"
 gem 'dotenv-rails'
 gem 'simple_calendar'
 gem 'ransack'
+gem 'rails-i18n'
