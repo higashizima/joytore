@@ -7,13 +7,13 @@ class Public::FavoriteGymsController < ApplicationController
   end
   
   def create
-    gym = Gym.find(params[:gym_id])
-    current_user.favorite_gyms.create(gym_id: gym.id)
+    @gym = Gym.find(params[:gym_id])
+    current_user.favorite_gyms.create(gym_id: @gym.id)
   end
   
   def destroy
-    gym = Gym.find(params[:gym_id])
-    favorite_gym = current_user.favorite_gyms.find_by(gym_id: gym.id)
+    @gym = Gym.find(params[:gym_id])
+    favorite_gym = current_user.favorite_gyms.find_by(gym_id: @gym.id)
     favorite_gym.destroy
   end
   

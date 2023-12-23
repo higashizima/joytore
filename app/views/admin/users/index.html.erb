@@ -1,18 +1,16 @@
-<% users.each do |user| %>
+<% @users.each do |user| %>
   <div class="user_index">
     <div class="user_index_user">
-      <%= link_to user_path(user), method: :get, class: "link user_index_user" do %>
+      <%= link_to admin_user_path(user), method: :get, class: "link user_index_user" do %>
         <div class="image_tag"><%= image_tag user.get_profile_image(80,80), class: "rounded-circle", size: "80x80"  %></div>
         <div class="timeline_users_name"><strong><%= user.name%></strong></div>
         <!--<div class="user_index_user_description"><%= user.description%></div>-->
         <div class="user_index_user_gym">登録ジム：<%= user.gym.gym_name%></div>
       <% end %>
-      <% if current_user != user %>
       <!--非同期のためのid設定-->
-        <div id="follow_btn_<%= user.id %>", style="margin-left: auto">
-          <%= render '/public/relationships/follow_btn', user: user %>
+        <div id="active_btn_<%= user.id %>", style="margin-left: auto;">
+          <%= render '/admin/users/active_btn', user: user %>
         </div>
-      <% end %>
     </div>
   </div>
 <% end %>

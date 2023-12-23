@@ -15,17 +15,6 @@
         <%= @user.favorite_gyms.count %>お気に入りジム
       <% end %>
     </div>
-  <!--カレンダー表示-->
-  <!--<%= month_calendar training_records: @training_records do |date, training_records| %>-->
-  <!--　<%= date.day %>-->
-  <!--  　<% training_records.each do |training_record| %>-->
-  <!--      <div class="calendar_training_records">-->
-  <!--        <% if training_record.is_a?(TrainingRecord) %>-->
-  <!--          <%= link_to '⭐️️',post_workout_path(event) %>-->
-  <!--        <% end %>-->
-  <!--      </div>-->
-  <!--  <% end %>-->
-  <!--<% end %>-->
 </div>
   <div class="user_info">
     <div class="user_name"><strong><%= @user.name%></strong></div>
@@ -39,6 +28,8 @@
     <%= render '/public/relationships/follow_btn', user: @user %>
   </div>
 <% else %>
+  <% if @user.email != "guest@example.com" %>
     <%= link_to "プロフィール編集", user_profile_path, class:"link edit_btn" %>
+  <% end %>
 <% end %>
-<%= render '/layouts/timeline', training_records: @training_records %>
+<%= render '/public/training_records/timeline', training_records: @training_records %>

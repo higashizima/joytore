@@ -58,7 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'kaminari'
 gem "cocoon"
-gem 'dotenv-rails'
 gem 'simple_calendar'
 gem 'ransack'
 gem 'rails-i18n'

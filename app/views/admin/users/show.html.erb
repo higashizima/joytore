@@ -1,0 +1,26 @@
+<div class="show_profile">
+  <div class="profile_head">
+    <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle", size: "150x150"  %>
+    <div class="user_follow_info">
+      <div class="user_follow_info_item">
+        <%= @user.training_records.count %>投稿
+      </div>
+      <div class="user_follow_info_item">  
+        <%= @user.followers.count %>フォロー
+      </div>
+      <div class="user_follow_info_item">  
+        <%= @user.followeds.count %>フォロワー
+      </div>
+      <div class="user_follow_info_item">  
+        <%= @user.favorite_gyms.count %>お気に入りジム
+      </div>
+    </div>
+  </div>
+  <div class="user_info">
+    <div class="user_name"><strong><%= @user.name%></strong></div>
+    <div class="show_user_description" style="white-space:pre-wrap;" ><%= @user.description%></div>
+    <div class="show_user_gym">登録ジム：<%= @users_gym.gym_name%></div>
+  </div>
+</div>
+
+<%= render '/admin/training_records/timeline', training_records: @training_records %>

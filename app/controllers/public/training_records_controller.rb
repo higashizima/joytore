@@ -7,7 +7,6 @@ class Public::TrainingRecordsController < ApplicationController
   end
 
   def create
-    # _errors.html.erbに渡すインスタンス変数のため＠マーク必要
      @training_record =current_user.training_records.new(training_record_params)
      if @training_record.save
        redirect_to user_path(id: current_user)
@@ -22,10 +21,6 @@ class Public::TrainingRecordsController < ApplicationController
     @menu = Menu.find(@detail.id)
     @post_comment = PostComment.new
   end
-
-  def edit
-    @training_record = TrainingRecord.find(params[:id])
-  end
   
   def destroy
     training_record = TrainingRecord.find(params[:id])
@@ -38,6 +33,7 @@ class Public::TrainingRecordsController < ApplicationController
     @users = User.ransack(name_cont: @q).result
     @users_training_records = TrainingRecord.where(user_id: @users.pluck(:id))
     @training_records = TrainingRecord.ransack(content_cont: @q).result
+    @gyms = Gym.ransack(gym_name_cont: @q).result
   end
   
   

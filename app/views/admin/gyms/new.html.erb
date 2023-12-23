@@ -1,0 +1,27 @@
+<h1>ジム新規登録</h1>
+
+<!--エラーテンプレート-->
+<div id="comments_error">
+  <%= render 'layouts/errors', model: @gym %>
+</div>
+
+<%= form_with model: @gym, url: admin_gyms_path, method: :post, local: true  do |f| %>
+  <div class="edit_item">ジム名</div>
+    <%= f.text_field :gym_name, placeholder:"ジム名" %>
+  <div class="edit_item">郵便番号</div>
+    <%= f.text_field :postcode, placeholder:"0000000" %>
+  <div class="edit_item">住所</div>
+    <%= f.text_area :address, placeholder:"住所", style: "width:300px" %>
+  <div class="edit_item">月額</div>
+    <%= f.text_field :fee, placeholder:"例：7000" %>
+  <div>
+    <%= f.radio_button :is_open, :true %>
+    <%= f.label :is_open_true,"営業中", style: "margin-top: 20px;" %>
+  </div>
+  <div>
+    <%= f.radio_button :is_open, :false %>
+    <%= f.label :is_open_false,"閉店" %>
+  </div>
+  <br>
+  <%= f.submit "保存", class: 'link update_btn' %>
+<% end %>

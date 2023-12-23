@@ -9,17 +9,29 @@
     <script src="https://kit.fontawesome.com/15ed15601f.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>
     <header>
       <div class="header">
-        <strong><%= link_to 'ジョイトレ', root_path, class: "header_name link" %></strong>
-        <% if user_signed_in? %>
-          <%= render '/layouts/search' %>
+        
+        <% if admin_signed_in?%> 
+          <%= link_to admin_top_path, class: "header_name" do %>
+             <img src='/assets/joytore_logo.png' width="200">
+          <% end %>
+        <% else %>
+          <%= link_to root_path, class: "header_name" do %>
+            <img src='/assets/joytore_logo.png' width="200">
+          <% end %>
         <% end %>
       </div>
     </header>
+        <% if user_signed_in? %>
+          <%= render '/layouts/search' %>
+        <% end %>
+
     <div class="main">
       <% if user_signed_in? %>
         <div class="sideber">

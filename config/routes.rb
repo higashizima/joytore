@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
   
   devise_for :admins, skip: %i[registrations passwords], controllers: {
@@ -15,6 +16,10 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/sessions#admin_guest_sign_in'
+  end
+  
   scope module: :public do
     resources :gyms, only:%i[index show] do
       resource :favorite_gyms, only: %i[create destroy] 
@@ -29,11 +34,18 @@ Rails.application.routes.draw do
       get "followings", to: 'relationships#followings'
       get "followers", to: 'relationships#followers'
     end
-    resources :training_records, only:%i[new show create edit update destroy] do
+    resources :training_records, only:%i[new show create destroy] do
       resources :post_comments, only: %i[create destroy]
       resource :likes, only: %i[create destroy]
     end
     get "search", to:"training_records#search"
+  end
+  
+  namespace :admin do
+    get 'top', to:'homes#top'
+    resources :users, only:%i[index show update]
+    resources :training_records, only:%i[show edit update]
+    resources :gyms, only:%i[new create index show edit update]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

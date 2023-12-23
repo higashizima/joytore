@@ -12,7 +12,9 @@
           <% end %>
         </p>
         <p><%= user.followers.count %>フォロー　<%= user.followeds.count %>フォロワー</p>
-        <p><%= link_to '編集する', user_profile_path, class: "link" %></p>
+        <% if user.email != "guest@example.com" %>
+            <p><%= link_to '編集する', user_profile_path, class: "link" %></p>
+        <% end %>
     </div>
 </div>
 <div class="navi">

@@ -1,12 +1,16 @@
-<%= form_with model: @user, url: user_update_path, method: :patch, local: true  do |f| %>
-  <div class="edit_item">プロフィール画像</div>
-    <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'edit_item_image' %>
-  <div class="edit_item">名前</div>
-    <%= f.text_field :name, placeholder:@user.name, class: 'edit_item_name' %>
-  <div class="edit_item">自己紹介</div>
-    <%= f.text_area :description, placeholder:@user.description, class: 'edit_item_description' %>
-  <div class="edit_item">登録ジム</div>
-    <%= f.collection_select :gym_id, Gym.all, :id, :gym_name, options = { prompt: "登録ジムを選択してください"}, class: 'edit_item_gym' %>
-  <br>
-  <%= f.submit "保存", class: 'link update_btn' %>
+<% if @user.email != "guest@example.com" %>
+  <%= form_with model: @user, url: user_update_path, method: :patch, local: true  do |f| %>
+    <div class="edit_item">プロフィール画像</div>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'edit_item_image' %>
+    <div class="edit_item">名前</div>
+      <%= f.text_field :name, placeholder:@user.name, class: 'edit_item_name' %>
+    <div class="edit_item">自己紹介</div>
+      <%= f.text_area :description, placeholder:@user.description, class: 'edit_item_description' %>
+    <div class="edit_item">登録ジム</div>
+      <%= f.collection_select :gym_id, Gym.all, :id, :gym_name, options = { prompt: "登録ジムを選択してください"}, class: 'edit_item_gym' %>
+    <br>
+    <%= f.submit "保存", class: 'link update_btn' %>
+  <% end %>
+<% else %>
+  <p>Guestユーザーはプロフィール編集できません</p>
 <% end %>

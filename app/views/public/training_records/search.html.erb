@@ -2,18 +2,25 @@
   <ul class="tab__menu">
     <li class="tab__menu-item is-active" data-tab="01">ユーザー</li>
     <li class="tab__menu-item" data-tab="02">投稿</li>
+    <li class="tab__menu-item" data-tab="03">ジム</li>
   </ul>
-  <!--ジムのタイムラインパネル-->
+  <!--ユーザーの検索結果タイムラインパネル-->
   <div class="tab__panel">
     <div class="tab__panel-box tab__panel-gym is-show" data-panel="01">
       <div class="tab__panel-content">
-        <%= render '/layouts/timeline', training_records: @users_training_records %>
+        <%= render '/public/training_records/timeline', training_records: @users_training_records %>
       </div>
     </div>
-    <!--フォロー中のタイムラインパネル-->
+    <!--投稿の検索結果タイムラインパネル-->
     <div class="tab__panel-box tab__panel-following" data-panel="02">
       <div class="tab__panel-content">
-      <%= render '/layouts/timeline', training_records: @training_records %>
+      <%= render '/public/training_records/timeline', training_records: @training_records %>
+      </div>
+    </div>
+    <!--ジムの検索結果パネル-->
+    <div class="tab__panel-box tab__panel-following" data-panel="03">
+      <div class="tab__panel-content">
+      <%= render '/public/gyms/list', gyms: @gyms %>
       </div>
     </div>
   </div>
