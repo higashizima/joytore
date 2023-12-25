@@ -1,3 +1,10 @@
+<h1>ジム編集</h1>
+
+<!--エラーテンプレート-->
+<div id="comments_error">
+  <%= render 'layouts/errors', model: @gym %>
+</div>
+
 <%= form_with model: @gym, url: admin_gym_path, method: :patch, local: true  do |f| %>
   <div class="edit_item">ジム名</div>
     <%= f.text_field :gym_name, placeholder:@gym.gym_name %>

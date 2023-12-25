@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do |n|
+20.times do |n|
 Gym.create!(
   gym_name: "エニタイム#{n + 1}",
   postcode: "100000#{n + 1}",
@@ -16,7 +16,7 @@ Gym.create!(
   )
 end
 
-5.times do |n|
+20.times do |n|
 User.create!(
   gym_id: "#{n + 1}",
   name: "テスト#{n + 1}",
@@ -27,7 +27,7 @@ User.create!(
   )
 end
 
-5.times do |n|
+20.times do |n|
 TrainingRecord.create!(
   user_id: "#{n + 1}",
   content: "トレーニングの一言コメント#{n + 1}"
@@ -101,7 +101,7 @@ Menu.create!(
     ]
 )
   
-5.times do |n|
+20.times do |n|
 Detail.create!(
   training_record_id: "#{n + 1}",
   menu_id: "#{n + 1}",

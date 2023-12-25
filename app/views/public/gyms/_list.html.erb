@@ -14,7 +14,7 @@
       <td><%= gym.gym_name %></td>
       <td><%= gym.postcode %></td>
       <td><%= gym.address %></td>
-      <td><%= gym.fee %></td>
+      <td>￥<%= gym.fee.to_s(:delimited) %></td>
       <td>
         <div id="favorite_btn_<%= gym.id %>">
           <%= render 'public/favorite_gyms/favorite_btn', gym: gym %>

@@ -5,7 +5,7 @@ class Admin::GymsController < ApplicationController
   end
 
   def index
-    @gyms = Gym.all
+    @gyms = Gym.all.page(params[:page]).per(15)
   end
 
   def create
@@ -23,8 +23,11 @@ class Admin::GymsController < ApplicationController
 
   def update
     @gym = Gym.find(params[:id])
-    @gym.update(gym_params)
-    redirect_to admin_gyms_path
+    if @gym.update(gym_params)
+      redirect_to admin_gyms_path
+    else
+      render :edit
+    end
   end
 
   def destroy

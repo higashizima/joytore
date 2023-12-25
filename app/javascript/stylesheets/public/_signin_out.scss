@@ -1,0 +1,28 @@
+@use "../global/variables" as *;
+
+.container{
+  text-align: center;
+  
+  h2{
+    margin-bottom: 10px;
+  }
+}
+
+.box1{
+  display: inline-block;
+  text-align: left;
+}
+
+.box2{
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.actions input[type="submit"] {
+  @include btn01($color: orange);
+}
+
+label {
+  margin:10px 0 0 0;
+}

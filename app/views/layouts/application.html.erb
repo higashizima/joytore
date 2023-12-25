@@ -41,7 +41,9 @@
       <div class="main_content">
         <%= yield %>
       </div>
-      <div class="left_sideber"></div>
+      <% if admin_signed_in?%> 
+        <div class="left_sideber"></div>
+      <% end %>
     </div>
   </body>
 </html>

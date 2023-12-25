@@ -16,9 +16,10 @@
       <td><%= gym.gym_name %></td>
       <td><%= gym.postcode %></td>
       <td><%= gym.address %></td>
-      <td><%= gym.fee %></td>
+      <td>￥<%= gym.fee.to_s(:delimited) %></td>
       <td><%= link_to "編集する", edit_admin_gym_path(gym), method: :get, class: "btn btn-outline-secondary" %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+

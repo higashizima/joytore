@@ -3,8 +3,7 @@ import "../stylesheets/application";
 document.addEventListener('turbolinks:load', function() {
     
   const tabMenus = document.querySelectorAll('.tab__menu-item');
-  // console.log(tabMenus);
-  
+
   tabMenus.forEach((tabMenu) => {
   tabMenu.addEventListener('click', tabSwitch);
     })
@@ -17,15 +16,12 @@ function tabSwitch(e) {
   
   // 「closest('.tab__menu')」はクリックされた要素の親要素を取得する
   const tabList = e.currentTarget.closest('.tab__menu');
-  // console.log(tabList);
   const tabItems = tabList.querySelectorAll('.tab__menu-item');
-  // console.log(tabItems);
-  
+
   // 「nextElementSibling」はクリックされた要素の親要素の兄弟要素の子要素を取得
   const tabPanelItems = tabList.
   nextElementSibling.querySelectorAll('.tab__panel-box');
-  // console.log(tabPanelItems);
-  
+
   // クリックされたtabの同階層のmenuとpanelのクラスを削除
   tabItems.forEach((tabItem) => {
     tabItem.classList.remove('is-active');
