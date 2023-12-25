@@ -13,7 +13,8 @@ class TrainingRecord < ApplicationRecord
 
 
   validates :content, length: {maximum: 150}
-  validates :details, presence: true
+  # コメントだけの投稿も許可する
+  # validates :details, presence: true
 
   def liked_by?(user)
     likes.exists?(user_id: user.id)

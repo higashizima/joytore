@@ -5,7 +5,7 @@ class Admin::GymsController < ApplicationController
   end
 
   def index
-    @gyms = Gym.all.page(params[:page]).per(15)
+    @gyms = Gym.all
   end
 
   def create

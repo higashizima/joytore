@@ -27,12 +27,6 @@ User.create!(
   )
 end
 
-20.times do |n|
-TrainingRecord.create!(
-  user_id: "#{n + 1}",
-  content: "トレーニングの一言コメント#{n + 1}"
-  )
-end
 
 Menu.create!(
     [
@@ -102,6 +96,13 @@ Menu.create!(
 )
   
 20.times do |n|
+TrainingRecord.create!(
+  user_id: "#{n + 1}",
+  content: "トレーニングの一言コメント#{n + 1}"
+  )
+end
+
+20.times do |n|
 Detail.create!(
   training_record_id: "#{n + 1}",
   menu_id: "#{n + 1}",
@@ -110,6 +111,8 @@ Detail.create!(
   set: 5
   )
 end  
+
+
 
 Admin.create!(
   email: "test_admin@email",
