@@ -115,15 +115,3 @@ Admin.create!(
   email: "test_admin@email",
   password: "test_admin"
   )
-
-# attributesがうまくいかない
-# TrainingRecord.create!({
-#   user_id: 1,
-#   content: "やばい疲れたw かなり追い込めたから明日やばそう、早めに寝る",
-#   details_attributes: [
-#     {
-#       weight: 92.5,
-#       rep: 10,
-#       set: 5
-#     }]
-# })
