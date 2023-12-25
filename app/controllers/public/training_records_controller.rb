@@ -4,6 +4,7 @@ class Public::TrainingRecordsController < ApplicationController
   def new
     @training_record = TrainingRecord.new
     @detail = @training_record.details.build
+    @user = current_user
   end
 
   def create

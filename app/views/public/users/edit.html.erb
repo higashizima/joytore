@@ -1,3 +1,8 @@
+<!--エラーテンプレート-->
+<div id="comments_error">
+  <%= render 'layouts/errors', model: @user %>
+</div>
+
 <% if @user.email != "guest@example.com" %>
   <%= form_with model: @user, url: user_update_path, method: :patch, local: true  do |f| %>
     <div class="edit_item">プロフィール画像</div>
@@ -11,6 +16,9 @@
     <br>
     <%= f.submit "保存", class: 'link update_btn' %>
   <% end %>
+  
+  <%= link_to '退会', user_confirm_path, class: "confirm" %>
+  
 <% else %>
   <p>Guestユーザーはプロフィール編集できません</p>
 <% end %>

@@ -31,6 +31,12 @@
         <% if user_signed_in? %>
           <%= render '/layouts/search' %>
         <% end %>
+        
+    <% flash.each do |message_type, message| %>
+      <div style="color: red;">
+        <%= message %>
+      </div>
+    <% end %>
 
     <div class="main">
       <% if user_signed_in? %>

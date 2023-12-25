@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     get 'users/:id', to: 'users#show', as: 'user'
     get 'user/profile', to:'users#edit'
     patch 'user/update', to:'users#update'
+    get 'user/confirm', to:'users#confirm'
+    patch 'user/hide', to:'users#hide'
     resources :users, only: %i[] do
       resource :relationships, only: %i[create destroy]
       # ルート要編集

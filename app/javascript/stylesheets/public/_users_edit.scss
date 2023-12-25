@@ -21,3 +21,35 @@
 .update_btn:hover {
   @include btn_hover01(orange);
 }
+
+.confirm{
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.confirm:hover {
+  color: red;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.confirm_no_btn{
+  @include btn01(orange);
+}
+
+.confirm_no_btn:hover {
+  @include btn_hover01(orange);
+}
+
+.confirm_yes_btn{
+  text-decoration: none;
+  color: black;
+  float: right;
+}
+
+.confirm_yes_btn:hover {
+  color: red;
+  text-decoration: none;
+  transition: .3s;
+}

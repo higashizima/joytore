@@ -1,0 +1,26 @@
+<div class="comment_form">
+  <!--routingをネストしているため2つの引数を渡す-->
+  <%= form_with model: [@training_record, @post_comment] do |f| %>
+    <%= f.text_area :comment, placeholder: "コメントしよう", class: "comment_area" %>
+    <%= f.submit "送信", class: "comment_submit" %>
+  <% end %>
+</div>
+<div class="comment_item">
+  <% @training_record.post_comments.each do |post_comment| %>
+  <div class="comment_user">
+    <%= image_tag post_comment.user.get_profile_image(50,50) %>
+    <div class="comment_user_name"><%= post_comment.user.name %></div>
+    <div class="comment_date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+  </div>
+    <p class="comment_text">
+      <%= post_comment.comment %>
+    </p>
+    <div class="comment_text_under">
+      <% if post_comment.user == current_user %>
+        <%= link_to training_record_post_comment_path(post_comment.training_record, post_comment), data: { confirm: '本当に消しますか？' },  method: :delete, class: "link comment_delete" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

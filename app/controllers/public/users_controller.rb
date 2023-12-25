@@ -24,6 +24,13 @@ class Public::UsersController < ApplicationController
     end
   end
   
+  def hide
+    @user = current_user
+    @user.update(is_active: false)
+    reset_session
+    redirect_to new_user_session_path, notice: "退会しました"
+  end
+  
 
 
   private

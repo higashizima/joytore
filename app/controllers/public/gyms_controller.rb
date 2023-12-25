@@ -3,7 +3,7 @@ class Public::GymsController < ApplicationController
   
   def index
     @user = current_user
-    @gyms = Gym.all
+    @gyms = Gym.where(is_open: "true")
     @favorite_gym = FavoriteGym.new
   end
   

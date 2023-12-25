@@ -13,6 +13,11 @@ class User < ApplicationRecord
     end
   end       
   
+  # ログイン時の会員ステータス確認
+  def active_for_authentication?
+    super && (self.is_active == true)
+  end
+  
   # フォロー機能
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -32,7 +37,7 @@ class User < ApplicationRecord
   has_many :liked_training_records, through: :likes, source: :training_record
 
   validates :description, length: {maximum: 160}
-
+  validates :name,presence: true
 
   has_one_attached :profile_image
   # プロフィール画像取得

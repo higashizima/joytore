@@ -1,0 +1,16 @@
+<div class='container'>
+<h1 class="text-center">退会しますか？</h1>
+  <br>
+  <br>
+    <p class="text-center">
+      退会すると、会員情報やこれまでの投稿など<br>
+      すべての情報が削除されます。<br>
+      また復元はできません。
+    </p>
+  <br>
+  <br>
+    <div  class="text-center">
+      <%= link_to "退会しない", user_profile_path, :class => "confirm_no_btn" %>
+      <%= link_to "退会する", user_hide_path, method: :patch, :class => "confirm_yes_btn", data: { confirm: "本当に退会しますか？" }  %>
+    </div>
+  </div>

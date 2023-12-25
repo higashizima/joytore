@@ -5,12 +5,12 @@
 
 <%= form_with(model: @training_record, url: training_records_path, method: :post, local: true) do |f| %>
   <div class="field_name">Training Memo</div>
-    <!--動的に追加するフォームを挿入する箇所-->
-    <div id="detail-association-insertion-point"></div>
     <!--動的に追加するフォーム(renderで飛ばしている先が追加される) -->
     <%= f.fields_for :details do |form| %>
     <%= render "detail_fields", f: form %>
     <% end %>
+    <!--動的に追加するフォームを挿入する箇所-->
+    <div id="detail-association-insertion-point"></div>
   <!--追加ボタンの記述-->
     <%= link_to_add_association "＋トレーニング追加", f, :details, class: 'add_fields', id: 'add-btn',
     data: {

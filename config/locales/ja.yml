@@ -7,4 +7,5 @@ ja:
           password_confirmation: 'パスワード確認'
           name: 'なまえ'
           gym: 'ジム'
-          
+       training_record:
+          details: 'トレーニング内容'

@@ -16,6 +16,24 @@
   transition: .3s;
 }
 
+@mixin btn_delete{
+  border: 1px solid gray;
+  border-radius: 40px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin-left: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+@mixin btn_delete_hover{
+  border: 3px solid red;
+  color: red;
+  text-decoration: none;
+  transition: .3s;
+}
+
 
 $layout_border: 5px solid lightorange;
 

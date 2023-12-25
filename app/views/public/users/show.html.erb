@@ -17,7 +17,12 @@
     </div>
 </div>
   <div class="user_info">
-    <div class="user_name"><strong><%= @user.name%></strong></div>
+      <% if !@user.is_active %>
+        <p style="color: red;"><このユーザーは退会済です></p>
+      <% end %>
+    <div class="user_name">
+      <strong><%= @user.name%></strong>
+    </div>
     <div class="show_user_description" style="white-space:pre-wrap;" ><%= @user.description%></div>
     <div class="show_user_gym">登録ジム：<%= @users_gym.gym_name%></div>
   </div>
@@ -28,8 +33,6 @@
     <%= render '/public/relationships/follow_btn', user: @user %>
   </div>
 <% else %>
-  <% if @user.email != "guest@example.com" %>
     <%= link_to "プロフィール編集", user_profile_path, class:"link edit_btn" %>
-  <% end %>
 <% end %>
 <%= render '/public/training_records/timeline', training_records: @training_records %>

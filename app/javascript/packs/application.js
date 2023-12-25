@@ -12,7 +12,7 @@ import 'jquery'
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "./main";
+import "./tab_menu";
 
 
 // require("jquery")
