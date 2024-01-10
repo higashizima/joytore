@@ -8,6 +8,14 @@
       <div class="date"><%= training_record.created_at.strftime('%Y/%m/%d') %></div>
     </div>
     <%= link_to training_record_path(training_record.id), class: "link" do %>
+    <% if training_record.image.attached? %>
+      <%= image_tag training_record.image %>
+      <div class="tag-box">
+        <% training_record.tags.each do |tag| %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
+      </div>
+    <% end %>
     <!--"white-space:pre-wrap;"＝改行表示-->
       <div class="content" style="white-space:pre-wrap;" >
         <%= training_record.content %>

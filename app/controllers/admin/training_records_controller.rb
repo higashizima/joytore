@@ -2,8 +2,8 @@ class Admin::TrainingRecordsController < ApplicationController
   
   def show
     @training_record = TrainingRecord.find(params[:id])
-    @detail = Detail.find(@training_record.id)
-    @menu = Menu.find(@detail.id)
+    # @detail = Detail.find(@training_record.id)
+    # @menu = Menu.find(@detail.id)
   end
   
   def update
